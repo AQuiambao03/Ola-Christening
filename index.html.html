@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Godparent? — Olivia's Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Caveat:wght@500;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FAF4EC;
+  --paper:#FFFDF8;
+  --sage:#8FA888;
+  --sage-dark:#6E8868;
+  --blush:#E8C9C2;
+  --plum:#3F3431;
+  --gold:#C9A45C;
+  --ink:#4A4039;
+  --line: rgba(63,52,49,0.12);
+  --radius: 22px;
+  --shadow: 0 10px 40px rgba(63,52,49,0.10);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Work Sans', sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+h1,h2,h3{
+  font-family:'Fraunces', serif;
+  color:var(--plum);
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+.script{font-family:'Caveat', cursive; color:var(--sage-dark);}
+img{max-width:100%; display:block;}
+.section{
+  position:relative;
+  padding:100px 24px;
+  max-width:1100px;
+  margin:0 auto;
+}
+@media (max-width:768px){
+  .section{padding:70px 20px;}
+}
+
+/* ===== Reveal animation ===== */
+.reveal{ opacity:0; transform:translateY(36px); transition:opacity 0.9s cubic-bezier(.22,.61,.36,1), transform 0.9s cubic-bezier(.22,.61,.36,1); }
+.reveal.in{ opacity:1; transform:translateY(0); }
+.reveal-zoom{ opacity:0; transform:scale(0.88); transition:opacity 0.9s ease, transform 0.9s cubic-bezier(.22,.61,.36,1); }
+.reveal-zoom.in{ opacity:1; transform:scale(1); }
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal-zoom, .float, .pulse, .pulse-glow{ transition:none !important; animation:none !important; opacity:1 !important; transform:none !important; }
+}
+
+/* ===== Sticky nav ===== */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 28px;
+  background:rgba(250,244,236,0.7);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  transition:transform .4s ease;
+}
+.nav .brand{font-family:'Caveat', cursive; font-size:1.6rem; color:var(--sage-dark); font-weight:700;}
+.nav-dots{display:flex; gap:9px;}
+.nav-dots button{
+  width:9px; height:9px; border-radius:50%; border:none;
+  background:rgba(63,52,49,0.18); cursor:pointer; padding:0;
+  transition: background .3s, transform .3s;
+}
+.nav-dots button.active{ background:var(--sage-dark); transform:scale(1.35); }
+@media (max-width:640px){ .nav-dots{display:none;} }
+
+/* ===== Floating background ambience ===== */
+.ambient{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.cloud, .star, .petal{ position:absolute; opacity:0.5; }
+.cloud{ width:160px; height:60px; background:#fff; border-radius:100px; filter:blur(2px); opacity:0.55; }
+.cloud::before, .cloud::after{ content:''; position:absolute; background:#fff; border-radius:50%; }
+.cloud::before{ width:70px; height:70px; top:-35px; left:20px; }
+.cloud::after{ width:90px; height:90px; top:-45px; left:70px; }
+.star{ font-size:1.1rem; color:var(--gold); opacity:0.5; }
+.float-slow{ animation: floatY 9s ease-in-out infinite; }
+.float-med{ animation: floatY 6s ease-in-out infinite; }
+@keyframes floatY{ 0%,100%{ transform:translateY(0px);} 50%{ transform:translateY(-22px);} }
+@keyframes drift{ 0%{ transform:translateX(0);} 100%{ transform:translateX(60px);} }
+
+/* ============ SECTION 1: HERO ============ */
+.hero{
+  min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; position:relative; padding:40px 24px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(232,201,194,0.55), transparent 60%),
+    linear-gradient(180deg, #FDF8F1 0%, var(--cream) 60%, var(--cream) 100%);
+}
+.hero-photo{
+  width:220px; height:220px; border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, #fff 0%, var(--blush) 45%, var(--sage) 100%);
+  border:6px solid var(--paper);
+  box-shadow: 0 20px 50px rgba(63,52,49,0.18);
+  display:flex; align-items:center; justify-content:center;
+  font-size:5rem; margin-bottom:28px;
+}
+.eyebrow{
+  font-family:'Caveat', cursive; font-size:1.6rem; color:var(--sage-dark);
+  margin-bottom:6px; display:block;
+}
+.hero h1{ font-size:3.4rem; margin-bottom:14px; }
+.hero p.lead{ font-size:1.15rem; max-width:480px; color:var(--ink); opacity:0.85; }
+@media (max-width:640px){ .hero h1{ font-size:2.4rem;} .hero-photo{width:170px; height:170px; font-size:3.6rem;} }
+
+.cta-btn{
+  margin-top:38px;
+  font-family:'Fraunces', serif; font-size:1rem; font-weight:600;
+  background:var(--sage-dark); color:#fff;
+  border:none; padding:16px 38px; border-radius:100px;
+  cursor:pointer; box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+  letter-spacing:0.02em;
+}
+.cta-btn:hover{ transform:translateY(-4px); box-shadow:0 16px 40px rgba(63,52,49,0.22); }
+.cta-btn:focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
+.scroll-arrow{
+  margin-top:50px; font-size:1.6rem; color:var(--sage-dark);
+  animation: bounce 2.2s infinite;
+}
+@keyframes bounce{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
+
+/* ============ SECTION 2: MEET ME ============ */
+.meet-grid{
+  display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center;
+}
+@media (max-width:768px){ .meet-grid{ grid-template-columns:1fr; gap:36px; text-align:center;} }
+.meet-photo{
+  width:100%; aspect-ratio:4/5; border-radius:var(--radius);
+  background: linear-gradient(135deg, var(--blush), var(--sage));
+  display:flex; align-items:center; justify-content:center; font-size:6rem;
+  box-shadow:var(--shadow); position:relative;
+}
+.meet-photo::after{
+  content:''; position:absolute; inset:14px; border:2px solid rgba(255,255,255,0.6);
+  border-radius:calc(var(--radius) - 8px);
+}
+.section-tag{
+  font-family:'Caveat', cursive; color:var(--gold); font-size:1.3rem; display:block; margin-bottom:8px;
+}
+.meet-grid h2{ font-size:2.4rem; margin-bottom:18px; }
+.meet-grid p{ margin-bottom:14px; color:var(--ink); opacity:0.9; }
+.deco-leaf{ position:absolute; font-size:2rem; opacity:0.35; }
+
+/* ============ SECTION 3: TIMELINE ============ */
+.timeline-wrap{ text-align:center; }
+.timeline-wrap .section-head{ margin-bottom:60px; }
+.timeline{
+  position:relative; display:flex; justify-content:space-between; gap:20px;
+  padding-top:30px;
+}
+.timeline::before{
+  content:''; position:absolute; top:40px; left:0; right:0; height:3px;
+  background: var(--line);
+  transform-origin:left;
+  transform: scaleX(var(--line-progress, 0));
+  transition: transform 1.4s ease;
+  background:linear-gradient(90deg, var(--sage-dark), var(--gold));
+}
+.tl-item{ flex:1; display:flex; flex-direction:column; align-items:center; }
+.tl-dot{
+  width:18px; height:18px; border-radius:50%; background:var(--paper);
+  border:3px solid var(--sage-dark); margin-bottom:18px; position:relative; z-index:2;
+}
+.tl-card{
+  background:var(--paper); border-radius:18px; padding:18px; width:100%;
+  box-shadow:var(--shadow); border:1px solid var(--line);
+}
+.tl-card .tl-icon{ font-size:2.2rem; margin-bottom:10px; }
+.tl-card h3{ font-size:1.05rem; margin-bottom:4px; }
+.tl-card span{ font-size:0.85rem; color:var(--sage-dark); }
+@media (max-width:768px){
+  .timeline{ flex-direction:column; align-items:flex-start; padding-left:18px; }
+  .timeline::before{ top:0; bottom:0; left:8px; right:auto; width:3px; height:100%;
+    transform: scaleY(var(--line-progress,0)); transform-origin:top; background:linear-gradient(180deg, var(--sage-dark), var(--gold)); }
+  .tl-item{ flex-direction:row; align-items:flex-start; gap:18px; margin-bottom:30px; width:100%; }
+  .tl-dot{ margin-bottom:0; margin-top:6px; flex-shrink:0; }
+}
+
+/* ============ SECTION 4: GALLERY ============ */
+.gallery{
+  display:grid; grid-template-columns: repeat(4, 1fr); gap:16px;
+  grid-auto-rows:140px;
+}
+.g-item{
+  border-radius:18px; overflow:hidden; position:relative; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; font-size:2.6rem;
+  box-shadow:var(--shadow); transition: transform .35s ease, box-shadow .35s ease;
+}
+.g-item:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 18px 40px rgba(63,52,49,0.2); }
+.g-item.tall{ grid-row: span 2; }
+.g-item.wide{ grid-column: span 2; }
+.g1{ background:linear-gradient(135deg,#F6E0D8,#E8C9C2); }
+.g2{ background:linear-gradient(135deg,#D8E4D0,#9CAF88); }
+.g3{ background:linear-gradient(135deg,#F3E6CE,#D4AF7A); }
+.g4{ background:linear-gradient(135deg,#E8C9C2,#C9A45C); }
+.g5{ background:linear-gradient(135deg,#9CAF88,#6E8868); }
+.g6{ background:linear-gradient(135deg,#FBF1E6,#E8C9C2); }
+.g-heart{
+  position:absolute; font-size:1rem; opacity:0; color:#fff; pointer-events:none;
+}
+.g-item:hover .g-heart{ animation: floatHeart 1.6s ease forwards; }
+@keyframes floatHeart{ 0%{ opacity:0; transform:translateY(0) scale(0.6);} 30%{opacity:1;} 100%{ opacity:0; transform:translateY(-70px) scale(1.3);} }
+@media (max-width:768px){
+  .gallery{ grid-template-columns: repeat(2, 1fr); grid-auto-rows:120px; }
+  .g-item.wide{ grid-column: span 2; }
+}
+/* Lightbox */
+.lightbox{
+  position:fixed; inset:0; background:rgba(63,52,49,0.85); backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center; z-index:1000;
+  opacity:0; visibility:hidden; transition:opacity .35s ease;
+}
+.lightbox.open{ opacity:1; visibility:visible; }
+.lightbox-inner{
+  width:min(80vw, 420px); aspect-ratio:1; border-radius:24px;
+  display:flex; align-items:center; justify-content:center; font-size:6rem;
+  box-shadow:0 30px 80px rgba(0,0,0,0.4); position:relative;
+}
+.lightbox-close, .lightbox-nav{
+  position:absolute; background:rgba(255,255,255,0.85); border:none; border-radius:50%;
+  width:44px; height:44px; font-size:1.3rem; cursor:pointer; color:var(--plum);
+  display:flex; align-items:center; justify-content:center;
+}
+.lightbox-close{ top:-60px; right:0; }
+.lightbox-nav.prev{ left:-60px; top:50%; transform:translateY(-50%); }
+.lightbox-nav.next{ right:-60px; top:50%; transform:translateY(-50%); }
+@media (max-width:640px){
+  .lightbox-nav.prev{left:6px;} .lightbox-nav.next{right:6px;}
+  .lightbox-close{ top:-50px; right:6px; }
+}
+
+/* ============ SECTION 5: LETTER ============ */
+.letter-wrap{ display:flex; justify-content:center; }
+.letter{
+  background:var(--paper); max-width:680px; width:100%; padding:56px;
+  border-radius:6px; box-shadow:var(--shadow);
+  border:1px solid var(--line);
+  position:relative;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px);
+  background-size: 100% 38px;
+}
+.letter::before{
+  content:''; position:absolute; inset:14px; border:1px solid var(--gold);
+  border-radius:4px; opacity:0.4; pointer-events:none;
+}
+.letter h2{ font-size:1.7rem; margin-bottom:22px; }
+.letter p{ margin-bottom:16px; color:var(--ink); }
+.signature{
+  font-family:'Caveat', cursive; font-size:2.2rem; color:var(--sage-dark); margin-top:24px;
+  display:inline-block; position:relative;
+}
+.signature::after{
+  content:''; position:absolute; left:0; bottom:-4px; height:2px; width:100%;
+  background:var(--sage-dark); transform-origin:left; transform:scaleX(0);
+  animation: drawLine 1.6s ease forwards 0.6s;
+}
+.letter.in .signature::after{ animation-play-state:running; }
+@keyframes drawLine{ to{ transform:scaleX(1); } }
+@media (max-width:640px){ .letter{ padding:30px 22px; } }
+
+/* ============ SECTION 6: THE BIG QUESTION ============ */
+.question-section{
+  min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; position:relative; overflow:hidden;
+  background: radial-gradient(ellipse at 50% 30%, rgba(212,164,92,0.18), transparent 65%), var(--cream);
+}
+.q-photo{
+  width:170px; height:170px; border-radius:50%; margin-bottom:30px;
+  background: radial-gradient(circle at 35% 30%, #fff 0%, var(--blush) 45%, var(--sage) 100%);
+  border:5px solid var(--paper); box-shadow:var(--shadow);
+  display:flex; align-items:center; justify-content:center; font-size:4rem;
+  animation: floatY 7s ease-in-out infinite;
+}
+.question-section h2{
+  font-size:2.6rem; max-width:680px; margin-bottom:18px; font-weight:500;
+  font-style:italic;
+}
+.question-section .subtext{ font-size:1.05rem; opacity:0.8; margin-bottom:42px; }
+.q-buttons{ display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+.btn-primary, .btn-secondary{
+  font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem;
+  padding:18px 42px; border-radius:100px; cursor:pointer; border:none;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.btn-primary{
+  background: linear-gradient(135deg, var(--sage-dark), var(--sage));
+  color:#fff; box-shadow:0 0 0 0 rgba(143,168,136,0.6);
+  animation: pulseGlow 2.6s infinite;
+}
+.btn-primary:hover{ transform:translateY(-5px) scale(1.03); }
+.btn-secondary{
+  background:transparent; color:var(--ink); border:2px solid var(--line);
+}
+.btn-secondary:hover{ transform:translateY(-3px); border-color:var(--sage-dark); }
+@keyframes pulseGlow{
+  0%{ box-shadow:0 0 0 0 rgba(143,168,136,0.55); }
+  70%{ box-shadow:0 0 0 18px rgba(143,168,136,0); }
+  100%{ box-shadow:0 0 0 0 rgba(143,168,136,0); }
+}
+.sparkle{
+  position:absolute; color:var(--gold); opacity:0.7; font-size:1.2rem;
+  animation: sparkle 3s ease-in-out infinite;
+}
+@keyframes sparkle{ 0%,100%{ opacity:0.2; transform:scale(0.8);} 50%{ opacity:1; transform:scale(1.2);} }
+
+/* ============ ACCEPTANCE OVERLAY ============ */
+.accept-overlay{
+  position:fixed; inset:0; z-index:2000; display:flex; align-items:center; justify-content:center;
+  background:rgba(63,52,49,0.45); backdrop-filter:blur(8px);
+  opacity:0; visibility:hidden; transition:opacity .4s ease;
+}
+.accept-overlay.open{ opacity:1; visibility:visible; }
+.accept-card{
+  background:var(--paper); border-radius:28px; max-width:480px; width:92%;
+  padding:44px 36px; text-align:center; box-shadow:0 30px 80px rgba(0,0,0,0.25);
+  position:relative; max-height:88vh; overflow-y:auto;
+  transform:translateY(30px) scale(0.96); transition:transform .45s cubic-bezier(.22,.61,.36,1);
+}
+.accept-overlay.open .accept-card{ transform:translateY(0) scale(1); }
+.accept-card h3{ font-size:1.7rem; margin-bottom:10px; }
+.accept-card p.sub{ opacity:0.8; margin-bottom:24px; }
+.accept-form label{ display:block; text-align:left; font-size:0.85rem; margin-bottom:6px; color:var(--sage-dark); font-weight:500; }
+.accept-form input, .accept-form textarea{
+  width:100%; padding:13px 16px; border-radius:12px; border:1px solid var(--line);
+  background:var(--cream); font-family:inherit; font-size:0.95rem; margin-bottom:16px;
+  color:var(--ink);
+}
+.accept-form input:focus, .accept-form textarea:focus{ outline:2px solid var(--sage-dark); }
+.accept-form textarea{ resize:vertical; min-height:80px; }
+.close-x{
+  position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.3rem;
+  cursor:pointer; color:var(--ink); opacity:0.6;
+}
+.success-state{ display:none; }
+.success-state.show{ display:block; }
+.accept-form.hide{ display:none; }
+.success-state .big-emoji{ font-size:3.5rem; margin-bottom:10px; }
+
+/* confetti canvas */
+#confetti-canvas{ position:fixed; inset:0; z-index:1999; pointer-events:none; }
+
+/* ============ EVENT DETAILS ============ */
+.details-grid{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:24px;
+}
+@media (max-width:768px){ .details-grid{ grid-template-columns:1fr; } }
+.glass-card{
+  background:rgba(255,255,255,0.55); border:1px solid rgba(255,255,255,0.6);
+  border-radius:var(--radius); padding:28px; backdrop-filter:blur(10px);
+  box-shadow:var(--shadow);
+}
+.glass-card h3{ font-size:1.1rem; margin-bottom:6px; display:flex; align-items:center; gap:10px; }
+.glass-card .icon-circle{
+  width:42px; height:42px; border-radius:50%; background:var(--sage); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;
+}
+.glass-card p{ color:var(--ink); opacity:0.85; }
+.map-frame{
+  width:100%; aspect-ratio:16/9; border-radius:18px; overflow:hidden;
+  grid-column:1 / -1; box-shadow:var(--shadow); border:1px solid var(--line);
+}
+.map-frame iframe{ width:100%; height:100%; border:0; }
+.cal-btn{
+  grid-column:1 / -1; justify-self:center;
+  background:var(--plum); color:#fff; border:none; padding:15px 34px; border-radius:100px;
+  font-family:'Fraunces', serif; font-weight:600; cursor:pointer; margin-top:6px;
+  transition:transform .25s ease;
+}
+.cal-btn:hover{ transform:translateY(-3px); }
+
+/* ============ COUNTDOWN ============ */
+.countdown-section{ text-align:center; }
+.flip-grid{ display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:40px; }
+.flip-card{
+  background:var(--plum); color:#fff; border-radius:16px; padding:22px 18px;
+  min-width:90px; box-shadow:var(--shadow); position:relative;
+}
+.flip-card .num{ font-family:'Fraunces', serif; font-size:2.6rem; font-weight:600; line-height:1; }
+.flip-card .lbl{ font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; opacity:0.65; margin-top:6px; }
+@media (max-width:640px){ .flip-card{ min-width:70px; padding:16px 10px;} .flip-card .num{ font-size:1.9rem; } }
+
+/* ============ BLESSING WALL ============ */
+.blessing-wrap{ text-align:center; }
+.blessing-form{
+  max-width:480px; margin:0 auto 50px; display:flex; flex-direction:column; gap:14px;
+}
+.blessing-form input, .blessing-form textarea{
+  padding:14px 18px; border-radius:14px; border:1px solid var(--line); background:var(--paper);
+  font-family:inherit; font-size:0.95rem; color:var(--ink);
+}
+.blessing-form textarea{ resize:vertical; min-height:70px; }
+.blessing-form button{
+  background:var(--sage-dark); color:#fff; border:none; padding:14px; border-radius:14px;
+  font-family:'Fraunces', serif; font-weight:600; cursor:pointer; transition:transform .2s ease;
+}
+.blessing-form button:hover{ transform:translateY(-2px); }
+.wall{
+  display:flex; flex-wrap:wrap; gap:26px; justify-content:center; padding:10px;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, var(--line) 40px),
+    var(--paper);
+  border-radius:var(--radius); border:1px solid var(--line); min-height:160px;
+}
+.polaroid{
+  background:#fff; padding:14px 14px 26px; border-radius:6px; box-shadow:0 10px 26px rgba(63,52,49,0.18);
+  width:200px; transform:rotate(var(--rot,0deg)); transition:transform .25s ease;
+  animation: dropIn .55s cubic-bezier(.22,.61,.36,1) backwards;
+}
+.polaroid:hover{ transform:rotate(0deg) translateY(-6px) scale(1.03); z-index:5; }
+@keyframes dropIn{ from{ opacity:0; transform: translateY(-40px) rotate(var(--rot,0deg)) scale(0.9);} to{ opacity:1; transform:translateY(0) rotate(var(--rot,0deg)) scale(1);} }
+.polaroid .pin{ width:14px; height:14px; border-radius:50%; background:var(--gold); margin:0 auto -7px; box-shadow:0 2px 4px rgba(0,0,0,0.3); position:relative; top:-7px; z-index:2;}
+.polaroid .ph-img{
+  height:90px; border-radius:3px; margin-bottom:10px;
+  background:linear-gradient(135deg, var(--blush), var(--sage));
+  display:flex; align-items:center; justify-content:center; font-size:1.8rem;
+}
+.polaroid .ph-name{ font-family:'Caveat', cursive; font-size:1.2rem; color:var(--sage-dark); }
+.polaroid .ph-msg{ font-size:0.85rem; color:var(--ink); margin-top:4px; }
+
+/* ============ FINAL THANK YOU ============ */
+.final-section{
+  text-align:center; padding-bottom:60px;
+  background: linear-gradient(180deg, var(--cream), #F3ECE0 60%, #ECE3D2);
+  position:relative; overflow:hidden;
+}
+.final-photo{
+  width:240px; height:240px; border-radius:50%; margin:0 auto 30px;
+  background: radial-gradient(circle at 35% 30%, #fff 0%, var(--blush) 40%, var(--sage) 100%);
+  border:6px solid var(--paper); box-shadow:var(--shadow);
+  display:flex; align-items:center; justify-content:center; font-size:5.5rem;
+}
+.final-section h2{ font-size:2.2rem; max-width:560px; margin:0 auto 12px; }
+.final-section p.sub{ opacity:0.8; margin-bottom:32px; }
+footer{
+  margin-top:60px; padding-top:30px; border-top:1px solid var(--line);
+  font-size:0.9rem; opacity:0.7;
+}
+footer .fnames{ font-family:'Caveat', cursive; font-size:1.4rem; color:var(--sage-dark); margin-bottom:6px; }
+.social-links{ margin-top:14px; display:flex; gap:16px; justify-content:center; font-size:1.2rem; }
+
+/* ============ LOADING SCREEN ============ */
+#loadingScreen{
+  position:fixed; inset:0; z-index:3000;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:40px 24px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(232,201,194,0.55), transparent 60%),
+    linear-gradient(180deg, #FDF8F1 0%, var(--cream) 60%, var(--cream) 100%);
+  transition: opacity .8s ease, visibility .8s ease;
+}
+#loadingScreen.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+#loadingScreen .load-photo{
+  width:200px; height:200px; border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, #fff 0%, var(--blush) 45%, var(--sage) 100%);
+  border:6px solid var(--paper); box-shadow:0 20px 50px rgba(63,52,49,0.18);
+  display:flex; align-items:center; justify-content:center; font-size:4.6rem;
+  margin-bottom:30px; animation: floatY 5s ease-in-out infinite;
+}
+#loadingScreen .load-eyebrow{
+  font-family:'Caveat', cursive; font-size:1.6rem; color:var(--sage-dark); margin-bottom:6px;
+  opacity:0; animation: fadeUp 0.8s ease forwards 0.1s;
+}
+#loadingScreen h1{
+  font-size:2.2rem; max-width:480px; opacity:0; font-style:italic; font-weight:500;
+  animation: fadeUp 1s ease forwards 0.6s;
+}
+#loadingScreen .load-cta{
+  margin-top:34px; opacity:0; animation: fadeUp 1s ease forwards 1.4s;
+}
+@media (max-width:640px){ #loadingScreen h1{ font-size:1.6rem;} #loadingScreen .load-photo{ width:150px; height:150px; font-size:3.4rem;} }
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(18px);} to{ opacity:1; transform:translateY(0);} }
+
+/* shared section heading */
+.section-head{ text-align:center; max-width:640px; margin:0 auto 50px; }
+.section-head h2{ font-size:2.2rem; }
+</style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Loading Screen -->
+<div id="loadingScreen">
+  <div class="load-photo" aria-hidden="true">👶</div>
+  <span class="load-eyebrow">Hello Ninong / Ninang 👋</span>
+  <h1>I have something very special to ask you.</h1>
+  <button class="cta-btn load-cta" id="loadingCta">Open My Invitation</button>
+</div>
+
+
+<!-- Ambient floating background -->
+<div class="ambient" id="ambient"></div>
+
+<!-- Sticky Nav -->
+<nav class="nav">
+  <span class="brand">Olivia 🌿</span>
+  <div class="nav-dots" id="navDots">
+    <button data-target="hero" class="active" aria-label="Welcome"></button>
+    <button data-target="meet" aria-label="Meet Me"></button>
+    <button data-target="journey" aria-label="My Journey"></button>
+    <button data-target="gallery" aria-label="Photo Memories"></button>
+    <button data-target="letter" aria-label="Message"></button>
+    <button data-target="question" aria-label="The Question"></button>
+    <button data-target="details" aria-label="Event Details"></button>
+    <button data-target="countdown" aria-label="Countdown"></button>
+    <button data-target="wall" aria-label="Blessing Wall"></button>
+    <button data-target="final" aria-label="Thank You"></button>
+  </div>
+</nav>
+
+<!-- ================= SECTION 1: HERO ================= -->
+<section class="hero" id="hero">
+  <div class="hero-photo float-slow" aria-hidden="true">👶</div>
+  <span class="eyebrow">Hello Ninong / Ninang 👋</span>
+  <h1 class="reveal">I have something very special to ask you.</h1>
+  <p class="lead reveal">Scroll down to open a little invitation made just for you, from someone very small with a very big heart.</p>
+  <button class="cta-btn" id="openInvite">Open My Invitation</button>
+  <div class="scroll-arrow" aria-hidden="true">↓</div>
+</section>
+
+<!-- ================= SECTION 2: MEET ME ================= -->
+<section class="section" id="meet">
+  <div class="meet-grid">
+    <div class="reveal-zoom">
+      <div class="meet-photo">🍼</div>
+    </div>
+    <div class="reveal">
+      <span class="section-tag">Meet Me</span>
+      <h2>My name is Olivia, and I was born on April 9, 2026.</h2>
+      <p>My parents have been blessed with so many beautiful moments since the day I arrived &mdash; quiet mornings, tiny milestones, and a whole lot of love.</p>
+      <p>Now, a very important day is approaching: the day I'll be welcomed into our faith family. And there's someone special my parents have in mind to stand beside me.</p>
+      <p class="script" style="font-size:1.3rem;">That someone might just be you. 🌿</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3: TIMELINE ================= -->
+<section class="section timeline-wrap" id="journey">
+  <div class="section-head reveal">
+    <span class="section-tag">My Little Journey</span>
+    <h2>A few of my favorite firsts</h2>
+  </div>
+  <div class="timeline" id="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-icon">🌅</div>
+        <h3>Birth Day</h3>
+        <span>April 9, 2026</span>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-icon">😊</div>
+        <h3>First Smile</h3>
+        <span>3 weeks old</span>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-icon">😄</div>
+        <h3>First Laugh</h3>
+        <span>6 weeks old</span>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-icon">📸</div>
+        <h3>Monthly Photos</h3>
+        <span>Growing every day</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4: GALLERY ================= -->
+<section class="section" id="gallery">
+  <div class="section-head reveal">
+    <span class="section-tag">Photo Memories</span>
+    <h2>A few favorites from our album</h2>
+  </div>
+  <div class="gallery" id="galleryGrid">
+    <div class="g-item g1 wide reveal-zoom" data-emoji="👶" tabindex="0" role="button" aria-label="Open photo">😴<span class="g-heart">💕</span></div>
+    <div class="g-item g2 tall reveal-zoom" data-emoji="👨‍👩‍👧" tabindex="0" role="button" aria-label="Open photo">👨‍👩‍👧<span class="g-heart">💚</span></div>
+    <div class="g-item g3 reveal-zoom" data-emoji="🧦" tabindex="0" role="button" aria-label="Open photo">🧸<span class="g-heart">💛</span></div>
+    <div class="g-item g4 reveal-zoom" data-emoji="🍼" tabindex="0" role="button" aria-label="Open photo">🍼<span class="g-heart">🤍</span></div>
+    <div class="g-item g5 reveal-zoom" data-emoji="🌷" tabindex="0" role="button" aria-label="Open photo">🌷<span class="g-heart">💚</span></div>
+    <div class="g-item g6 wide reveal-zoom" data-emoji="👣" tabindex="0" role="button" aria-label="Open photo">👣<span class="g-heart">💕</span></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lightbox-inner" id="lightboxInner"></div>
+  <button class="lightbox-nav prev" id="lbPrev" aria-label="Previous photo">‹</button>
+  <button class="lightbox-nav next" id="lbNext" aria-label="Next photo">›</button>
+  <button class="lightbox-close" id="lbClose" aria-label="Close photo viewer">✕</button>
+</div>
+
+<!-- ================= SECTION 5: LETTER ================= -->
+<section class="section letter-wrap" id="letter">
+  <div class="letter reveal" id="letterCard">
+    <span class="section-tag">A Message From Mommy &amp; Daddy</span>
+    <h2>Dear friend,</h2>
+    <p>From the moment we found out we were expecting Olivia, we dreamed of the people who would help raise her &mdash; not just family by blood, but family by heart.</p>
+    <p>You've been there for us through so much, and your kindness, faith, and steady presence are exactly what we hope Olivia grows up surrounded by.</p>
+    <p>We would be so honored if you would consider walking this journey with us, as her Godparent.</p>
+    <p>With all our love,</p>
+    <span class="signature">Mommy &amp; Daddy</span>
+  </div>
+</section>
+
+<!-- ================= SECTION 6: THE BIG QUESTION ================= -->
+<section class="question-section" id="question">
+  <span class="sparkle" style="top:14%; left:12%;">✦</span>
+  <span class="sparkle" style="top:22%; right:14%; animation-delay:1s;">✦</span>
+  <span class="sparkle" style="bottom:18%; left:18%; animation-delay:1.6s;">✦</span>
+  <span class="sparkle" style="bottom:24%; right:20%; animation-delay:0.6s;">✦</span>
+  <div class="q-photo" aria-hidden="true">👶</div>
+  <h2 class="reveal">"Will you guide me, support me, and walk beside me in faith as my Godparent?"</h2>
+  <p class="subtext reveal">It would mean the world to my family and me.</p>
+  <div class="q-buttons reveal">
+    <button class="btn-primary" id="acceptBtn">✅ Yes, I Accept</button>
+    <button class="btn-secondary" id="laterBtn">🤍 I Need More Time</button>
+  </div>
+</section>
+
+<!-- Acceptance Overlay -->
+<div class="accept-overlay" id="acceptOverlay" role="dialog" aria-modal="true" aria-labelledby="acceptTitle">
+  <div class="accept-card">
+    <button class="close-x" id="closeOverlay" aria-label="Close">✕</button>
+    <div id="acceptStep1">
+      <div style="font-size:3rem; margin-bottom:8px;">🎉</div>
+      <h3 id="acceptTitle">Yay! Thank you for accepting this special role in my life.</h3>
+      <p class="sub">Just a few details so my parents can keep you close to everything.</p>
+      <form class="accept-form" id="acceptForm">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="Your name">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
+        <label for="msg">Optional Message</label>
+        <textarea id="msg" name="msg" placeholder="A little note for Olivia and her parents..."></textarea>
+        <button type="submit" class="cta-btn" style="width:100%;">Send My Acceptance</button>
+      </form>
+    </div>
+    <div class="success-state" id="successState">
+      <div class="big-emoji">💌</div>
+      <h3>Message received!</h3>
+      <p class="sub">Thank you, godparent-to-be. Olivia's family can't wait to celebrate with you. Scroll down for the event details and countdown.</p>
+      <button class="cta-btn" id="successClose">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SECTION 8: EVENT DETAILS ================= -->
+<section class="section" id="details">
+  <div class="section-head reveal">
+    <span class="section-tag">Event Details</span>
+    <h2>The Big Day</h2>
+  </div>
+  <div class="details-grid">
+    <div class="glass-card reveal">
+      <h3><span class="icon-circle">⛪</span> Church</h3>
+      <p>St. Augustine Parish Church<br>123 Faith Avenue, Tarlac City</p>
+    </div>
+    <div class="glass-card reveal">
+      <h3><span class="icon-circle">🏛️</span> Reception Venue</h3>
+      <p>Garden Pavilion at Casa Olivia<br>45 Blossom Lane, Tarlac City</p>
+    </div>
+    <div class="glass-card reveal">
+      <h3><span class="icon-circle">📅</span> Date</h3>
+      <p>Sunday, September 6, 2026</p>
+    </div>
+    <div class="glass-card reveal">
+      <h3><span class="icon-circle">⏰</span> Time</h3>
+      <p>Mass at 2:00 PM &middot; Reception to follow at 4:00 PM</p>
+    </div>
+    <div class="glass-card reveal" style="grid-column:1 / -1;">
+      <h3><span class="icon-circle">👗</span> Dress Code</h3>
+      <p>Garden Formal &mdash; soft sage, blush, and cream tones. Comfortable shoes recommended for the garden reception.</p>
+    </div>
+    <div class="map-frame reveal">
+      <iframe loading="lazy" title="Event location map" src="https://maps.google.com/maps?q=Tarlac%20City&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+    <button class="cal-btn reveal" id="calBtn">+ Add to Calendar</button>
+  </div>
+</section>
+
+<!-- ================= SECTION 9: COUNTDOWN ================= -->
+<section class="section countdown-section" id="countdown">
+  <div class="section-head reveal">
+    <span class="section-tag">Counting Down</span>
+    <h2>Until My Special Day</h2>
+  </div>
+  <div class="flip-grid reveal">
+    <div class="flip-card"><div class="num" id="cd-days">00</div><div class="lbl">Days</div></div>
+    <div class="flip-card"><div class="num" id="cd-hours">00</div><div class="lbl">Hours</div></div>
+    <div class="flip-card"><div class="num" id="cd-mins">00</div><div class="lbl">Minutes</div></div>
+    <div class="flip-card"><div class="num" id="cd-secs">00</div><div class="lbl">Seconds</div></div>
+  </div>
+</section>
+
+<!-- ================= SECTION 10: BLESSING WALL ================= -->
+<section class="section blessing-wrap" id="wall">
+  <div class="section-head reveal">
+    <span class="section-tag">Blessing Wall</span>
+    <h2>Leave Olivia a little blessing</h2>
+  </div>
+  <form class="blessing-form reveal" id="blessingForm">
+    <input type="text" id="blessName" placeholder="Your name" required>
+    <textarea id="blessMsg" placeholder="Write a short blessing or wish for Olivia..." required></textarea>
+    <button type="submit">Pin My Blessing 📌</button>
+  </form>
+  <div class="wall reveal" id="wall-board"></div>
+</section>
+
+<!-- ================= SECTION 11: FINAL THANK YOU ================= -->
+<section class="final-section" id="final">
+  <div class="section">
+    <div class="final-photo reveal-zoom" aria-hidden="true">👨‍👩‍👧</div>
+    <h2 class="reveal">Thank you for being part of this beautiful chapter of my life.</h2>
+    <p class="sub reveal">See you on my special day. 🌿</p>
+    <button class="cta-btn reveal" id="finalCta">Accept My Invitation</button>
+    <footer>
+      <div class="fnames">Mommy, Daddy &amp; Baby Olivia</div>
+      <div>September 6, 2026 &middot; St. Augustine Parish Church, Tarlac City</div>
+      <div class="social-links">
+        <span aria-hidden="true">📘</span>
+        <span aria-hidden="true">📷</span>
+        <span aria-hidden="true">✉️</span>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<script>
+/* ============== Loading screen ============== */
+const loadingScreen = document.getElementById('loadingScreen');
+document.getElementById('loadingCta').addEventListener('click', ()=>{
+  loadingScreen.classList.add('hide');
+  document.getElementById('meet').scrollIntoView({behavior:'smooth'});
+});
+// prevent scroll-jump while loading screen is up
+document.body.style.overflow = 'hidden';
+document.getElementById('loadingCta').addEventListener('click', ()=>{
+  setTimeout(()=>{ document.body.style.overflow = ''; }, 400);
+});
+
+/* ============== Ambient background elements ============== */
+(function(){
+  const ambient = document.getElementById('ambient');
+  // clouds
+  for(let i=0;i<4;i++){
+    const c = document.createElement('div');
+    c.className = 'cloud float-slow';
+    c.style.top = (10 + i*22) + '%';
+    c.style.left = (-10 + i*5) + '%';
+    c.style.animationDuration = (8 + i*1.5) + 's';
+    c.style.animationDelay = (i*1.2) + 's';
+    ambient.appendChild(c);
+  }
+  // stars
+  for(let i=0;i<14;i++){
+    const s = document.createElement('div');
+    s.className = 'star float-med';
+    s.textContent = '✦';
+    s.style.top = (Math.random()*100) + '%';
+    s.style.left = (Math.random()*100) + '%';
+    s.style.animationDuration = (4 + Math.random()*4) + 's';
+    s.style.animationDelay = (Math.random()*3) + 's';
+    s.style.fontSize = (0.7 + Math.random()*1) + 'rem';
+    ambient.appendChild(s);
+  }
+})();
+
+/* ============== Scroll reveal ============== */
+const revealEls = document.querySelectorAll('.reveal, .reveal-zoom');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); }
+  });
+},{threshold:0.18});
+revealEls.forEach(el=>io.observe(el));
+
+/* timeline progress line */
+const timeline = document.getElementById('timeline');
+const tlObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ timeline.style.setProperty('--line-progress', 1); }
+  });
+},{threshold:0.3});
+tlObserver.observe(timeline);
+
+/* ============== Smooth scroll nav ============== */
+const sections = ['hero','meet','journey','gallery','letter','question','details','countdown','wall','final'];
+const navDots = document.querySelectorAll('#navDots button');
+navDots.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.target).scrollIntoView({behavior:'smooth'});
+  });
+});
+document.getElementById('openInvite').addEventListener('click', ()=>{
+  document.getElementById('meet').scrollIntoView({behavior:'smooth'});
+});
+
+/* highlight active nav dot */
+const navObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const idx = sections.indexOf(entry.target.id);
+      navDots.forEach(d=>d.classList.remove('active'));
+      if(navDots[idx]) navDots[idx].classList.add('active');
+    }
+  });
+},{threshold:0.5});
+sections.forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) navObserver.observe(el);
+});
+
+/* ============== Gallery + Lightbox ============== */
+const galleryItems = Array.from(document.querySelectorAll('.g-item'));
+const lightbox = document.getElementById('lightbox');
+const lightboxInner = document.getElementById('lightboxInner');
+let currentIndex = 0;
+
+function openLightbox(i){
+  currentIndex = i;
+  const item = galleryItems[currentIndex];
+  lightboxInner.className = 'lightbox-inner ' + item.classList[1];
+  lightboxInner.textContent = item.dataset.emoji;
+  lightbox.classList.add('open');
+}
+function closeLightbox(){ lightbox.classList.remove('open'); }
+function nav(dir){
+  currentIndex = (currentIndex + dir + galleryItems.length) % galleryItems.length;
+  openLightbox(currentIndex);
+}
+galleryItems.forEach((item, i)=>{
+  item.addEventListener('click', ()=>openLightbox(i));
+  item.addEventListener('keypress', (e)=>{ if(e.key==='Enter') openLightbox(i); });
+});
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', ()=>nav(-1));
+document.getElementById('lbNext').addEventListener('click', ()=>nav(1));
+lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e)=>{
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowLeft') nav(-1);
+  if(e.key==='ArrowRight') nav(1);
+});
+
+/* swipe support for lightbox */
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', e=>{ touchStartX = e.touches[0].clientX; });
+lightbox.addEventListener('touchend', e=>{
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if(Math.abs(dx) > 50) nav(dx > 0 ? -1 : 1);
+});
+
+/* ============== Acceptance flow ============== */
+const acceptOverlay = document.getElementById('acceptOverlay');
+const acceptBtn = document.getElementById('acceptBtn');
+const finalCta = document.getElementById('finalCta');
+const laterBtn = document.getElementById('laterBtn');
+const closeOverlay = document.getElementById('closeOverlay');
+const acceptForm = document.getElementById('acceptForm');
+const acceptStep1 = document.getElementById('acceptStep1');
+const successState = document.getElementById('successState');
+let hasAccepted = false;
+
+function openAccept(){
+  acceptOverlay.classList.add('open');
+  fireConfetti();
+}
+function closeAccept(){ acceptOverlay.classList.remove('open'); }
+
+acceptBtn.addEventListener('click', openAccept);
+finalCta.addEventListener('click', ()=>{
+  if(hasAccepted){
+    document.getElementById('wall').scrollIntoView({behavior:'smooth'});
+  } else {
+    document.getElementById('question').scrollIntoView({behavior:'smooth'});
+  }
+});
+laterBtn.addEventListener('click', ()=>{
+  laterBtn.textContent = "💛 Take your time, no rush";
+  setTimeout(()=>{ laterBtn.textContent = "🤍 I Need More Time"; }, 2600);
+});
+closeOverlay.addEventListener('click', closeAccept);
+acceptOverlay.addEventListener('click', (e)=>{ if(e.target===acceptOverlay) closeAccept(); });
+
+acceptForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const data = {
+    fullName: document.getElementById('fullName').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('msg').value
+  };
+  // Backend submission placeholder — POST to your API which triggers NodeMailer
+  try{
+    await fetch('/api/godparent-accept', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+  }catch(err){
+    // Network may be unavailable in preview — fall through to success UI regardless
+    console.log('Submission queued (offline preview):', data);
+  }
+  acceptStep1.style.display = 'none';
+  successState.classList.add('show');
+  hasAccepted = true;
+  finalCta.textContent = 'Send My Blessings';
+});
+
+document.getElementById('successClose').addEventListener('click', ()=>{
+  closeAccept();
+  document.getElementById('details').scrollIntoView({behavior:'smooth'});
+});
+
+/* ============== Confetti ============== */
+const canvas = document.getElementById('confetti-canvas');
+const ctx = canvas.getContext('2d');
+function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function fireConfetti(){
+  const colors = ['#8FA888','#E8C9C2','#C9A45C','#FAF4EC','#6E8868'];
+  const pieces = [];
+  for(let i=0;i<140;i++){
+    pieces.push({
+      x: Math.random()*canvas.width,
+      y: -20 - Math.random()*canvas.height*0.3,
+      r: 4 + Math.random()*6,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      vx: -1 + Math.random()*2,
+      vy: 2 + Math.random()*3,
+      rot: Math.random()*360,
+      vrot: -6 + Math.random()*12,
+      shape: Math.random() > 0.5 ? 'rect' : 'circle'
+    });
+  }
+  let frame = 0;
+  function tick(){
+    frame++;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      p.x += p.vx; p.y += p.vy; p.rot += p.vrot;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI/180);
+      ctx.fillStyle = p.color;
+      if(p.shape==='rect'){ ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*1.6); }
+      else { ctx.beginPath(); ctx.arc(0,0,p.r/2,0,Math.PI*2); ctx.fill(); }
+      ctx.restore();
+    });
+    if(frame < 150){ requestAnimationFrame(tick); }
+    else { ctx.clearRect(0,0,canvas.width,canvas.height); }
+  }
+  tick();
+}
+
+/* ============== Add to calendar ============== */
+document.getElementById('calBtn').addEventListener('click', ()=>{
+  const start = '20260906T140000';
+  const end = '20260906T180000';
+  const text = encodeURIComponent("Olivia's Baptism");
+  const details = encodeURIComponent("Mass at St. Augustine Parish Church, reception to follow at Garden Pavilion, Casa Olivia, Tarlac City.");
+  const location = encodeURIComponent('St. Augustine Parish Church, Tarlac City');
+  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${start}/${end}&details=${details}&location=${location}`;
+  window.open(url, '_blank');
+});
+
+/* ============== Countdown ============== */
+const targetDate = new Date('2026-09-06T14:00:00');
+function updateCountdown(){
+  const now = new Date();
+  let diff = targetDate - now;
+  if(diff < 0) diff = 0;
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff / (1000*60*60)) % 24);
+  const mins = Math.floor((diff / (1000*60)) % 60);
+  const secs = Math.floor((diff / 1000) % 60);
+  document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ============== Blessing Wall ============== */
+const wallBoard = document.getElementById('wall-board');
+const blessingForm = document.getElementById('blessingForm');
+const seedBlessings = [
+  {name:'Tita Mara', msg:'Wishing you a life full of laughter and love, little Olivia! 💚', icon:'🌼'},
+  {name:'Tito Jay', msg:'May your faith grow as big as your smile.', icon:'⭐'},
+  {name:'Lola Connie', msg:'Welcome to the family, sweet girl!', icon:'🧸'}
+];
+function addBlessing(name, msg, icon){
+  const card = document.createElement('div');
+  card.className = 'polaroid';
+  const rot = (Math.random()*16 - 8).toFixed(1);
+  card.style.setProperty('--rot', rot+'deg');
+  card.innerHTML = `
+    <div class="pin"></div>
+    <div class="ph-img">${icon || '🌿'}</div>
+    <div class="ph-name">${name}</div>
+    <div class="ph-msg">${msg}</div>
+  `;
+  wallBoard.appendChild(card);
+}
+seedBlessings.forEach(b=>addBlessing(b.name, b.msg, b.icon));
+
+blessingForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const name = document.getElementById('blessName').value.trim();
+  const msg = document.getElementById('blessMsg').value.trim();
+  if(!name || !msg) return;
+  const icons = ['🌸','🌷','💫','🌿','🤍','🕊️'];
+  addBlessing(name, msg, icons[Math.floor(Math.random()*icons.length)]);
+  blessingForm.reset();
+  wallBoard.lastElementChild.scrollIntoView({behavior:'smooth', block:'center'});
+});
+</script>
+</body>
+</html>
