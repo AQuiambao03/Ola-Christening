@@ -771,6 +771,7 @@ img { max-width: 100%; display: block; }
 .polaroid-name { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--sage-dark); }
 .polaroid-msg  { font-size: 0.85rem; color: var(--ink); margin-top: 4px; }
 
+
 /* ===== FINAL SECTION ===== */
 .final-section {
   text-align: center;

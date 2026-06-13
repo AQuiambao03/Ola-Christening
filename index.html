@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property='og:title' content='>Will You Be My Godparent? — Ola's Invitation'/>
+	<meta property='og:image' content='assets/ola-1.jpeg'/>
+	<meta property='og:description' content='Inaanyayahan Ka Namin!'/>
+	<meta property=’og:url’ content='https://aquiambao03.github.io/Ola-Christening/'/>
+	<meta property='og:image:width' content='1200' />
+	<meta property='og:image:height' content='627' />
+	<meta property="og:type" content='website'/>
+
   <title>Will You Be My Godparent? — Ola's Invitation</title>
-  <link rel="icon" type="image/x-icon" href="/assets/church-solid-full.svg">
+  <link rel="icon" type="image/x-icon" href="./assets/flower.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Caveat:wght@500;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,8 +29,8 @@
     <div class="load-photo" aria-hidden="true">
       <img class="img-fluid rounded-circle" src="./assets/profile.JPG">
     </div>
-    <span class="load-eyebrow">Hello Tito / Tita <i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i></span>
-    <h1>I have something very special to ask you.</h1>
+    <span class="load-eyebrow" id="loadEyebrow">Hello Tito / Tita <i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i></span>
+    <h1 id="loadHeading">I have something very special to ask you.</h1>
     <div class="load-cta-wrap">
       <button class="btn-olive" id="loadingCta">Open My Invitation</button>
     </div>
@@ -82,10 +91,10 @@
     <div class="hero-photo float-slow" aria-hidden="true">
       <img class="img-fluid rounded-circle" src="./assets/profile.JPG">
     </div>
-    <span class="hero-eyebrow">Hello Tito / Tita <i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i></span>
-    <h1 class="reveal">Hoping you'll join me on my special day.</h1>
-    <p class="hero-lead reveal">Scroll down to open a little invitation made just for you, from someone very small with a very big heart.</p>
-    <button class="btn-olive mt-4" id="openInvite">Open My Invitation</button>
+    <span class="hero-eyebrow" id="heroEyebrow">Hello Tito / Tita <i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i></span>
+    <h1 class="reveal" id="heroHeading">Hoping you'll join me on my special day.</h1>
+    <p class="hero-lead reveal" id="heroLead">Scroll down to open a little invitation made just for you, from someone very small with a very big heart.</p>
+    <button class="btn-olive mt-4" id="openInvite">View My Invitation</button>
     <div class="scroll-arrow" aria-hidden="true">↓</div>
   </section>
 
@@ -269,14 +278,14 @@
           <label class="accept-field-label" for="email">Email Address</label>
           <input class="accept-input" type="email" id="email" name="email" required placeholder="you@example.com">
           <label class="accept-field-label" for="msg">Optional Message</label>
-          <textarea class="accept-input accept-textarea" id="msg" name="msg" placeholder="A little note for Olivia and her parents..."></textarea>
+          <textarea class="accept-input accept-textarea" id="msg" name="msg" placeholder="A little note for Ola and her parents..."></textarea>
           <button type="submit" class="btn-olive w-100">Send My Acceptance</button>
         </form>
       </div>
       <div class="success-state" id="successState">
         <div class="big-emoji">💌</div>
         <h3>Message received!</h3>
-        <p class="sub">Thank you, godparent-to-be. Olivia's family can't wait to celebrate with you. Scroll down for the event details and countdown.</p>
+        <p class="sub">Thank you, godparent-to-be. Ola's family can't wait to celebrate with you. Scroll down for the event details and countdown.</p>
         <button class="btn-olive" id="successClose">Continue</button>
       </div>
     </div>
@@ -305,7 +314,7 @@
         <div class="col-md-6 reveal">
           <div class="glass-card">
             <h3><span class="icon-circle"><i class="fa-solid fa-calendar-day fa-bounce"></i></span> Date</h3>
-            <p>Sunday, September 19, 2026</p>
+            <p>Saturday, September 19, 2026</p>
           </div>
         </div>
         <div class="col-md-6 reveal">
@@ -317,7 +326,7 @@
         <div class="col-12 reveal">
           <div class="glass-card">
             <h3><span class="icon-circle"><i class="fa-solid fa-shirt fa-bounce"></i></span> Dress Code</h3>
-            <p>We kindly ask guests to wear white or light-colored semi-casual attire.</p>
+            <p>We kindly ask guests to wear white semi-casual attire.</p>
           </div>
         </div>
       </div>
@@ -325,7 +334,32 @@
         <iframe loading="lazy" title="Event location map" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Parroquia del Espiritu Santo - San Luis, Tarlac, FHFC+4GF, Tarlac City, Tarlac&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
       </div>
       <div class="d-flex justify-content-center reveal">
-        <button class="btn-cal" id="calBtn">+ Add to Calendar</button>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Parroquia+del+Espiritu+Santo+San+Luis+Tarlac"
+          target="_blank"
+          class="btn-olive mx-1"
+        >
+          <i class="fa-solid fa-church"></i> Church
+        </a>
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Balai+Alfresco+San+Vicente+Tarlac+City"
+          target="_blank"
+          class="btn-olive mx-1"
+        >
+          <i class="fa-solid fa-champagne-glasses"></i> Reception
+        </a>
+
+        <a
+          href="https://www.google.com/maps/dir/Parroquia+del+Espiritu+Santo+San+Luis+Tarlac/Balai+Alfresco+San+Vicente+Tarlac+City"
+          target="_blank"
+          class="btn-olive mx-1"
+        >
+          <i class="fa-solid fa-car-side"></i> Directions
+        </a>
+        <button class="btn-olive mx-1" id="calBtn">
+          <i class="fa-solid fa-calendar-plus"></i> Add to Calendar
+        </button>
       </div>
     </div>
   </section>
@@ -355,7 +389,7 @@
       </div>
       <form class="blessing-form-wrap d-flex flex-column gap-3 mx-auto mb-5 reveal" id="blessingForm">
         <input class="blessing-field" type="text" id="blessName" placeholder="Your name" required>
-        <textarea class="blessing-field blessing-textarea" id="blessMsg" placeholder="Write a short blessing or wish for Olivia..." required></textarea>
+        <textarea class="blessing-field blessing-textarea" id="blessMsg" placeholder="Write a short blessing or wish for Ola..." required></textarea>
         <button type="submit" class="btn-pin">Pin My Blessing</button>
       </form>
       <div class="wall-board reveal" id="wall-board"></div>
@@ -380,6 +414,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/836ab936c2.js" crossorigin="anonymous"></script>
+  <script src="config.js"></script>
   <script src="scripts.js"></script>
+
   </body>
 </html>

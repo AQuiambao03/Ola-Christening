@@ -1,10 +1,30 @@
 /* ============================================================
-   olivia-scripts.js
-   All interactive behaviour for Olivia's Godparent Invitation
+   Ola-scripts.js
+   All interactive behaviour for Ola's Godparent Invitation
    ============================================================ */
+
+const API_URL = CONFIG.API_URL;
 
 /* ============== Loading screen ============== */
 const loadingScreen = document.getElementById('loadingScreen');
+
+const savedGodparentName = localStorage.getItem('godparentName');
+const savedGodparentAccepted = localStorage.getItem('hasAcceptedInvite') === 'true';
+
+if (savedGodparentAccepted && savedGodparentName) {
+  document.getElementById('loadEyebrow').innerHTML =
+    `Welcome back, Ninong / Ninang ${savedGodparentName} <i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>`;
+  document.getElementById('loadHeading').textContent =
+    "Thank you for saying yes! We can't wait to celebrate with you.";
+  document.getElementById('loadingCta').textContent = 'View Invitation';
+
+  document.getElementById('heroEyebrow').innerHTML =
+    `Welcome back, Ninong / Ninang ${savedGodparentName} <i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>`;
+  document.getElementById('heroHeading').textContent =
+    "Thank you for being part of my special day.";
+  document.getElementById('heroLead').textContent =
+    "Scroll down to revisit the details, the countdown, and the blessing wall.";
+}
 
 function dismissLoader() {
   loadingScreen.classList.add('hide');
@@ -34,7 +54,7 @@ document.getElementById('loadingCta').addEventListener('click', dismissLoader);
   for (let i = 0; i < 14; i++) {
     const s = document.createElement('div');
     s.className   = 'ambient-star float-med';
-    s.textContent = '✦';
+    s.textContent = '🌸';
     s.style.top              = (Math.random() * 100) + '%';
     s.style.left             = (Math.random() * 100) + '%';
     s.style.animationDuration = (4 + Math.random() * 4) + 's';
@@ -198,12 +218,28 @@ const laterBtn      = document.getElementById('laterBtn');
 const acceptForm    = document.getElementById('acceptForm');
 const acceptStep1   = document.getElementById('acceptStep1');
 const successState  = document.getElementById('successState');
-let hasAccepted     = false;
+let hasAccepted     = savedGodparentAccepted;
 
-function openAccept()  { acceptOverlay.classList.add('open'); fireConfetti(); }
+function openAccept() {
+  if (hasAccepted) {
+    // Already accepted previously - show success state directly
+    acceptStep1.style.display = 'none';
+    successState.classList.add('show');
+  } else {
+    acceptStep1.style.display = '';
+    successState.classList.remove('show');
+  }
+  acceptOverlay.classList.add('open');
+  fireConfetti();
+}
 function closeAccept() { acceptOverlay.classList.remove('open'); }
 
 acceptBtn.addEventListener('click', openAccept);
+
+if (hasAccepted) {
+  finalCta.textContent = 'Send My Blessings';
+}
+
 
 finalCta.addEventListener('click', () => {
   if (hasAccepted) {
@@ -223,25 +259,49 @@ acceptOverlay.addEventListener('click', (e) => { if (e.target === acceptOverlay)
 
 acceptForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   const data = {
-    fullName: document.getElementById('fullName').value,
-    email:    document.getElementById('email').value,
-    message:  document.getElementById('msg').value
+    fullName: document.getElementById('fullName').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    message: document.getElementById('msg').value.trim()
   };
+
   try {
-    await fetch('/api/godparent-accept', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(data)
+    const response = await fetch(`${API_URL}/acceptances`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to submit acceptance');
+    }
+
+    console.log('Acceptance saved:', result.data);
+
+    localStorage.setItem(
+      'godparentName',
+      data.fullName
+    );
+    localStorage.setItem('hasAcceptedInvite', 'true');
+
+    acceptStep1.style.display = 'none';
+    successState.classList.add('show');
+
+    hasAccepted = true;
+    finalCta.textContent = 'Send My Blessings';
+
   } catch (err) {
-    // Network unavailable in preview — fall through to success UI anyway
-    console.log('Submission queued (offline preview):', data);
+    console.error(err);
+
+    alert(
+      'Unable to submit your acceptance. Please try again.'
+    );
   }
-  acceptStep1.style.display = 'none';
-  successState.classList.add('show');
-  hasAccepted = true;
-  finalCta.textContent = 'Send My Blessings';
 });
 
 document.getElementById('successClose').addEventListener('click', () => {
@@ -307,7 +367,7 @@ function fireConfetti() {
 document.getElementById('calBtn').addEventListener('click', () => {
   const start    = '20260919T103000';
   const end      = '20260919T150000';
-  const text     = encodeURIComponent("Ola's Baptism");
+  const text     = encodeURIComponent("Ola's Christening");
   const details  = encodeURIComponent('Christening at Parroquia del Espiritu Santo - San Luis, Tarlac City, reception to follow at Balai Alfresco, Blk 4, Magsaysay Subdivision, San Vicente, Tarlac City.');
   const location = encodeURIComponent('Parroquia del Espiritu Santo - San Luis, Tarlac');
   window.open(
@@ -335,37 +395,108 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* ============== Blessing Wall ============== */
-const wallBoard    = document.getElementById('wall-board');
+
+const wallBoard = document.getElementById('wall-board');
 const blessingForm = document.getElementById('blessingForm');
 
-const seedBlessings = [
-  { name: 'Tita Mara',   msg: 'Wishing you a life full of laughter and love, little Olivia! 💚', icon: '🌼' },
-  { name: 'Tito Jay',    msg: 'May your faith grow as big as your smile.',                       icon: '⭐' },
-  { name: 'Lola Connie', msg: 'Welcome to the family, sweet girl!',                              icon: '🧸' }
-];
-
-function addBlessing(name, msg, icon) {
+/* Create blessing card */
+function addBlessing(blessing) {
   const card = document.createElement('div');
+
   card.className = 'polaroid';
+
   const rot = (Math.random() * 16 - 8).toFixed(1);
-  card.style.setProperty('--rot', rot + 'deg');
+
+  card.style.setProperty('--rot', `${rot}deg`);
+
   card.innerHTML = `
     <div class="polaroid-pin"></div>
-    <div class="polaroid-img">${icon || '🌿'}</div>
-    <div class="polaroid-name">${name}</div>
-    <div class="polaroid-msg">${msg}</div>`;
+    <div class="polaroid-img">${blessing.icon || '🌿'}</div>
+    <div class="polaroid-name">${blessing.name}</div>
+    <div class="polaroid-msg">${blessing.message}</div>
+  `;
+
   wallBoard.appendChild(card);
 }
 
-seedBlessings.forEach(b => addBlessing(b.name, b.msg, b.icon));
+/* Load blessings from MongoDB */
+async function loadBlessings() {
+  try {
+    const response = await fetch(`${API_URL}/blessings`);
 
-blessingForm.addEventListener('submit', (e) => {
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error);
+    }
+
+    wallBoard.innerHTML = '';
+
+    result.data.forEach(addBlessing);
+
+  } catch (err) {
+    console.error('Failed to load blessings:', err);
+
+    wallBoard.innerHTML = `
+      <div class="text-center p-4">
+        Unable to load blessings right now.
+      </div>
+    `;
+  }
+}
+
+/* Submit blessing */
+blessingForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const name = document.getElementById('blessName').value.trim();
-  const msg  = document.getElementById('blessMsg').value.trim();
-  if (!name || !msg) return;
-  const icons = ['🌸','🌷','💫','🌿','🤍','🕊️'];
-  addBlessing(name, msg, icons[Math.floor(Math.random() * icons.length)]);
-  blessingForm.reset();
-  wallBoard.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  const name =
+    document.getElementById('blessName').value.trim() ||
+    localStorage.getItem('godparentName');
+
+  const message =
+    document.getElementById('blessMsg').value.trim();
+
+  if (!name || !message) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/blessings`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        message
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to save blessing');
+    }
+
+    addBlessing(result.data);
+
+    blessingForm.reset();
+
+    wallBoard.lastElementChild.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+
+  } catch (err) {
+    console.error(err);
+
+    alert(
+      'Unable to save your blessing. Please try again.'
+    );
+  }
+});
+
+/* Initial load */
+document.addEventListener('DOMContentLoaded', () => {
+  loadBlessings();
 });
